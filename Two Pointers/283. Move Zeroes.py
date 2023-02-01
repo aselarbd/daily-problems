@@ -27,6 +27,7 @@ Follow up: Could you minimize the total number of operations done?
 from collections import deque
 
 
+# solution 1
 class Solution:
     def moveZeroes(self, nums: list[int]) -> None:
         """
@@ -46,3 +47,18 @@ class Solution:
                 nums[i] = non_zero.pop()
             else:
                 nums[i] = 0
+
+
+# Solution 2
+class Solution:
+    def moveZeroes(self, nums: list[int]) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+
+        L = 0
+
+        for R in range(len(nums)):
+            if nums[R]:
+                nums[L], nums[R] = nums[R], nums[L]
+                L += 1
