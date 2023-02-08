@@ -31,6 +31,7 @@ s consists of English letters, digits, symbols and spaces.
 """
 
 
+# Solution 1
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
         max_len = 0
@@ -57,3 +58,22 @@ class Solution:
             R += 1
 
         return max_len
+
+
+# Solution 2
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+
+        char_set = set()
+        max_length = 0
+        L, R = 0, 0
+
+        while R < len(s):
+            if s[R] not in char_set:
+                char_set.add(s[R])
+                R += 1
+                max_length = max(max_length, R - L)
+            else:
+                char_set.remove(s[L])
+                L += 1
+        return max_length
