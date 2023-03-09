@@ -65,7 +65,7 @@ class MuteQuark(QuarkBehaviour):
 
 class Duck(ABC):
 
-    def __init__(self, fly_behaviour, quark_behaviour):
+    def __init__(self, fly_behaviour: FlyBehaviour, quark_behaviour: QuarkBehaviour):
         self._fly_behaviour = fly_behaviour
         self._quark_behaviour = quark_behaviour
 
