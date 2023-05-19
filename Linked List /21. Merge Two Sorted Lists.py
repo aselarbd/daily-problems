@@ -78,3 +78,47 @@ class Solution:
             curr_node = new_node
 
         return head
+
+
+# slight improvement
+class Solution2:
+    def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
+
+        if not list1 and not list2:
+            return None
+        if not list1:
+            return list2
+        if not list2:
+            return list1
+
+        p1, p2 = list1, list2
+
+        head = None
+        curr_node = None
+
+        while p1 or p2:
+
+            if p1 and p2 and p1.val <= p2.val:
+                new_node = ListNode(val=p1.val)
+                p1 = p1.next
+
+            elif p1 and p2 and p1.val > p2.val:
+                new_node = ListNode(val=p2.val)
+                p2 = p2.next
+
+            elif not p1:
+                curr_node.next = p2
+                break
+
+            else:
+                curr_node.next = p1
+                break
+
+            if not head:
+                head = new_node
+            else:
+                curr_node.next = new_node
+
+            curr_node = new_node
+
+        return head
